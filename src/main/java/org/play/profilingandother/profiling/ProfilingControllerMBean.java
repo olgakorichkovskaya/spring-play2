@@ -1,4 +1,4 @@
-package org.play.c.profiling;
+package org.play.profilingandother.profiling;
 
 public interface ProfilingControllerMBean {
     boolean isEnabled();

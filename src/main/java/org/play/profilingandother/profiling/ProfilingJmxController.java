@@ -1,4 +1,4 @@
-package org.play.c.profiling;
+package org.play.profilingandother.profiling;
 
 //using JMX console
 public class ProfilingJmxController implements ProfilingControllerMBean  {

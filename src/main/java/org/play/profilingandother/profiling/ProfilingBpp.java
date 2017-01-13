@@ -1,4 +1,4 @@
-package org.play.c.profiling;
+package org.play.profilingandother.profiling;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

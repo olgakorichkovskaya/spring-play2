@@ -1,9 +1,8 @@
-package org.play.c;
+package org.play.profilingandother.profiling;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-//Run when proxy is already created - all is set up
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PostProxy {
+public @interface  Profiling {
 }

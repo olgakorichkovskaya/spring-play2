@@ -1,4 +1,4 @@
-package org.play.c.randomannotation;
+package org.play.profilingandother.randomannotation;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

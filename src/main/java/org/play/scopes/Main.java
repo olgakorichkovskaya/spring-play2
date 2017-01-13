@@ -1,6 +1,7 @@
-package org.play.c;
+package org.play.scopes;
 
 
+import org.play.profilingandother.MessagerInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -11,24 +12,24 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.GenericApplicationContext;
 
 import javax.annotation.PostConstruct;
-//3 phases constructor:
-// Constructor()  @POstconstruct and @PostProxy- @PostProxy works when all proxy is ready
-//profiling using flag in MBeanServer
+
 @Configuration
-@ComponentScan(basePackages = "org.play.c")
+@ComponentScan(basePackages = "org.play.scopes")
 @EnableAutoConfiguration
 public class Main {
 
     @Autowired
-    private MessagerInterface messager;
+    private Singleton singleton;
+
+    @Bean
+    protected Singleton get(){
+        return new Singleton();
+    }
+
 
     @PostConstruct
     private void init() throws InterruptedException {
 
-        while (true) {
-            Thread.sleep(500);
-            messager.send();
-        }
     }
 
     public static void main(String[] args) {

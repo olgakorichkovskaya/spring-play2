@@ -1,40 +1,37 @@
-package org.play.bfpp;
+package org.play.profilingandother;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.GenericApplicationContext;
 
 import javax.annotation.PostConstruct;
-
-/**
- * @DeprecatedClass can substitute one class with another (old by newer)
- * using BeanFactoryPostProcessor
- */
+//3 phases constructor:
+// Constructor()  @POstconstruct and @PostProxy- @PostProxy works when all proxy is ready
+//profiling using flag in MBeanServer
 @Configuration
-@ComponentScan(basePackages = "org.play.bfpp")
+@ComponentScan(basePackages = "org.play.profilingandother")
 @EnableAutoConfiguration
-public class MAin {
-
-    @Bean
-    public OldClassInterface oldClassInterface() {
-        return new OldClass();
-    }
+public class Main {
 
     @Autowired
-    private OldClassInterface oldClass;
+    private MessagerInterface messager;
 
     @PostConstruct
     private void init() throws InterruptedException {
-        oldClass.a();
+
+        while (true) {
+            Thread.sleep(500);
+            messager.send();
+        }
     }
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(MAin.class)
+        new SpringApplicationBuilder(Main.class)
                 .initializers((ApplicationContextInitializer<GenericApplicationContext>) applicationContext -> {
                 }).run(args);
 

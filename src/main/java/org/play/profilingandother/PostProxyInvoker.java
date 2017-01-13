@@ -1,4 +1,4 @@
-package org.play.c;
+package org.play.profilingandother;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;

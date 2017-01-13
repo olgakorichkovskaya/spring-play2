@@ -1,7 +1,7 @@
-package org.play.c;
+package org.play.profilingandother;
 
-import org.play.c.profiling.Profiling;
-import org.play.c.randomannotation.RandomInt;
+import org.play.profilingandother.profiling.Profiling;
+import org.play.profilingandother.randomannotation.RandomInt;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

@@ -1,4 +1,4 @@
-package org.play.c.randomannotation;
+package org.play.profilingandother.randomannotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

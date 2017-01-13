@@ -1,4 +1,4 @@
-package org.play.c;
+package org.play.profilingandother;
 
 public interface MessagerInterface {
     String send();

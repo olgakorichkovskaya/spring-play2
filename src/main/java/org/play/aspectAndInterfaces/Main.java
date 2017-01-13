@@ -24,6 +24,7 @@ public class Main {
     @Autowired
     private IUnderAspect iUnderAspect;
 
+
     @PostConstruct
     private void init() throws InterruptedException {
         iUnderAspect.run();

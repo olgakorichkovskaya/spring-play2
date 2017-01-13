@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 //final class is proxied - dynamic proxy is used instead of cglib
 // proxy name @Proxy11
 @Component
-public  final class UnderAspect implements IUnderAspect {
+public final class UnderAspect implements IUnderAspect {
 
 //    @Autowired
 //    private IUnderAspect underAspect;

@@ -1,5 +1,7 @@
 package org.play.c;
 
+import org.play.c.profiling.Profiling;
+import org.play.c.randomannotation.RandomInt;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

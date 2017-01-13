@@ -1,4 +1,4 @@
-package org.play.c;
+package org.play.c.profiling;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

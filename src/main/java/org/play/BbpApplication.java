@@ -21,7 +21,7 @@ import org.springframework.context.support.GenericApplicationContext;
 import javax.annotation.PostConstruct;
 
 @Configuration
-@ComponentScan(basePackages = "org.play.c")
+@ComponentScan(basePackages = "")
 @ImportResource("classpath*:spring.xml")
 @EnableAutoConfiguration
 
@@ -53,18 +53,12 @@ public class BbpApplication {
         return new B();
     }
 
-    @Autowired
-    private MessagerInterface messager;
-
     @PostConstruct
     private void init() throws InterruptedException {
 
         iUnderAspect.run();
         someService.a();
-        while (true) {
-            Thread.sleep(100);
-            messager.send();
-        }
+
     }
 
     public static void main(String[] args) {

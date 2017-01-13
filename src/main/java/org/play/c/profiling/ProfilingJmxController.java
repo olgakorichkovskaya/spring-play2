@@ -1,9 +1,7 @@
-package org.play.c;
+package org.play.c.profiling;
 
-import org.springframework.stereotype.Component;
-
-
-public class ProfilingController implements ProfilingControllerMBean  {
+//using JMX console
+public class ProfilingJmxController implements ProfilingControllerMBean  {
 private boolean enabled =true;
 
 @Override

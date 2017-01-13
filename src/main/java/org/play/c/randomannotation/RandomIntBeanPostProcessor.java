@@ -1,4 +1,4 @@
-package org.play.c;
+package org.play.c.randomannotation;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

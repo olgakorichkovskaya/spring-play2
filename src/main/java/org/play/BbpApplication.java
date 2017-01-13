@@ -3,6 +3,10 @@ package org.play;
 import org.play.aspectAndInterfaces.IUnderAspect;
 import org.play.b.A;
 import org.play.b.B;
+import org.play.bfpp.OldClass;
+import org.play.bfpp.OldClassInterface;
+import org.play.c.Messager;
+import org.play.c.MessagerInterface;
 import org.play.mytransactional.Service;
 import org.play.mytransactional.SomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +21,10 @@ import org.springframework.context.support.GenericApplicationContext;
 import javax.annotation.PostConstruct;
 
 @Configuration
-@ComponentScan()
+@ComponentScan(basePackages = "org.play.c")
 @ImportResource("classpath*:spring.xml")
 @EnableAutoConfiguration
+
 public class BbpApplication {
 
     @Autowired
@@ -32,6 +37,7 @@ public class BbpApplication {
     public A a() {
         return new A();
     }
+
     @Bean
     public A A() {
         return new A();
@@ -47,11 +53,18 @@ public class BbpApplication {
         return new B();
     }
 
+    @Autowired
+    private MessagerInterface messager;
+
     @PostConstruct
-    private void init() {
+    private void init() throws InterruptedException {
+
         iUnderAspect.run();
         someService.a();
-
+        while (true) {
+            Thread.sleep(100);
+            messager.send();
+        }
     }
 
     public static void main(String[] args) {
@@ -59,7 +72,7 @@ public class BbpApplication {
                 .initializers(new ApplicationContextInitializer<GenericApplicationContext>() {
                     @Override
                     public void initialize(GenericApplicationContext applicationContext) {
-                        applicationContext.setAllowBeanDefinitionOverriding(false);
+                        // applicationContext.setAllowBeanDefinitionOverriding(false);
                     }
                 }).run(args);
 

@@ -1,15 +1,13 @@
 package org.play;
 
-import org.play.aspectAndInterfaces.IUnderAspect;
 import org.play.b.A;
 import org.play.b.B;
-import org.play.mytransactional.Service;
-import org.play.mytransactional.SomeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.play.b.OverrideDisablingApplicationContextInitializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.GenericApplicationContext;
 
@@ -26,7 +24,7 @@ import javax.annotation.PostConstruct;
 public class BbpApplication {
 
     @Bean
-    public A a() {
+    public A a1() {
         return new A();
     }
 
@@ -50,12 +48,15 @@ public class BbpApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(BbpApplication.class)
-                .initializers(new ApplicationContextInitializer<GenericApplicationContext>() {
-                    @Override
-                    public void initialize(GenericApplicationContext applicationContext) {
-                        // applicationContext.setAllowBeanDefinitionOverriding(false);
-                    }
-                }).run(args);
+                .initializers(new OverrideDisablingApplicationContextInitializer()).run(args);
+
+
+// .initializers(new ApplicationContextInitializer<GenericApplicationContext>() {
+//            @Override
+//            public void initialize(GenericApplicationContext applicationContext) {
+//                applicationContext.setAllowBeanDefinitionOverriding(false);
+//            }
+//        }).run(args);;
 
     }
 }
